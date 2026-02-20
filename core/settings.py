@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-rbj&&rs0ru*(ui=in+@($hy7$m+z(50g3w+c%0n#-a_#a3_#6u"
+# read from env var so we can override on PythonAnywhere
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-rbj&&rs0ru*(ui=in+@($hy7$m+z(50g3w+c%0n#-a_#a3_#6u",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# use environment variable so that we can toggle on the server
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = []
+# hosts that are allowed when deployed to pythonanywhere (and local loopback)
+ALLOWED_HOSTS = ["jaoviedom.pythonanywhere.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -117,6 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+# directory where collectstatic will gather all files for serving in production
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
