@@ -1,0 +1,89 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Títulos principales */
+h1,
+h2,
+h3 {
+    color: #e84d13;
+    margin-bottom: 15px;
+}
+
+/* Navbar estilo “pill buttons” */
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    display: inline-block;
+    /* Para que se comporten como botones */
+    padding: 8px 16px;
+    margin-right: 8px;
+    background-color: #e84d13;
+    /* Fondo naranja */
+    color: #fff;
+    /* Texto blanco */
+    border-radius: 9999px;
+    /* Super redondeado = pill */
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+    background-color: #c63c0f;
+    /* Un naranja más oscuro al pasar */
+    transform: translateY(-2px);
+    /* Pequeño “lift” */
+}
+
+nav a:active {
+    background-color: #a6300c;
+    /* Aún más oscuro al hacer clic */
+    transform: translateY(0);
+    /* Vuelve a su lugar */
+}
+
+/* Línea divisoria */
+hr {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 15px 0;
+}
+
+/* Mensajes tipo alert */
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #e6ffed;
+    border: 1px solid #34c759;
+    color: #1b5e20;
+}
+
+.alert-info {
+    background: #e8f4ff;
+    border: 1px solid #1e90ff;
+    color: #0a3d62;
+}
+
+.alert-warning {
+    background: #fff7e6;
+    border: 1px solid #ffb020;
+    color: #7a4f01;
+}
+
+.alert-error {
+    background: #ffecec;
+    border: 1px solid #ff3b30;
+    color: #721c24;
+}

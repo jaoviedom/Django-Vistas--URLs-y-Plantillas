@@ -1,0 +1,21 @@
+{% extends "tienda/base.html" %}
+
+{% block title %}Pedidos{% endblock %}
+
+{% block content %}
+  <h1>Pedidos</h1>
+  <ul>
+    {% for pedido in pedidos %}
+      <li>
+        <a href="{% url 'tienda:detalle_pedido' pedido.pk %}">Pedido #{{ pedido.id }}</a> 
+        — {{ pedido.estado }} 
+        — Cliente: 
+        <a href="{% url 'tienda:detalle_cliente' pedido.cliente.pk %}">{{ pedido.cliente.nombre }}</a>
+        — Fecha: {{ pedido.fecha|date:"d/m/Y" }}
+        — Productos: {{ pedido.productos.count }}
+      </li>
+    {% empty %}
+      <li>No hay pedidos registrados.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
